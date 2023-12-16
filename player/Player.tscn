@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhmrqx1r47m1e"]
+[gd_scene load_steps=9 format=3 uid="uid://dhmrqx1r47m1e"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_q77q2"]
+[ext_resource type="Script" path="res://player/XR.gd" id="1_t4kfl"]
 [ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="2_wa23h"]
 [ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="3_2o6bp"]
 [ext_resource type="Material" uid="uid://csc82n3gg2jqx" path="res://player/Glove.tres" id="3_n13vn"]
@@ -9,17 +10,17 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c37wc"]
 
-[node name="XROrigin" type="XROrigin3D"]
-script = ExtResource("1_q77q2")
+[node name="Player" type="XROrigin3D"]
+script = ExtResource("1_t4kfl")
 
 [node name="XRCamera" type="XRCamera3D" parent="."]
 
-[node name="CharacterBody" type="CharacterBody3D" parent="XRCamera"]
+[node name="Body" type="CharacterBody3D" parent="XRCamera" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
-collision_mask = 9
+script = ExtResource("1_q77q2")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="XRCamera/CharacterBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="CollisionShape" type="CollisionShape3D" parent="XRCamera/Body"]
 shape = SubResource("CapsuleShape3D_c37wc")
 
 [node name="AudioListener" type="AudioListener3D" parent="XRCamera"]

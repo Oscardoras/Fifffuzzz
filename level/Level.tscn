@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://p6afuj570ihr"]
+[gd_scene load_steps=12 format=3 uid="uid://p6afuj570ihr"]
 
+[ext_resource type="Script" path="res://level/Level.gd" id="1_dpdpo"]
 [ext_resource type="PackedScene" uid="uid://dhmrqx1r47m1e" path="res://player/Player.tscn" id="1_whrr1"]
 [ext_resource type="PackedScene" uid="uid://wxieb6bwlwik" path="res://projectile/ProjectileManager.tscn" id="2_gan7l"]
-[ext_resource type="Texture2D" uid="uid://dk02ce86igw2b" path="res://addons/AllSkyFree_Skyboxes/Cold Night Equirect.png" id="3_8df7u"]
-[ext_resource type="PackedScene" uid="uid://bc5sp7l1r8mes" path="res://enemies/Bee.tscn" id="4_vsd6a"]
+[ext_resource type="Texture2D" uid="uid://df3lxq3wfhrpo" path="res://addons/AllSkyFree_Skyboxes/AllSky_Overcast4_Low.png" id="3_da2na"]
+[ext_resource type="PackedScene" uid="uid://t1256ljchd68" path="res://level/plateforme.glb" id="6_xduha"]
+[ext_resource type="PackedScene" uid="uid://bxy0r6nvwxvbg" path="res://enemies/EnemyManager.tscn" id="7_ilp52"]
+[ext_resource type="PackedScene" uid="uid://dlq5o25xee5i1" path="res://level/flower_lotus.glb" id="7_neqny"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t0hks"]
-panorama = ExtResource("3_8df7u")
+panorama = ExtResource("3_da2na")
 
 [sub_resource type="Sky" id="Sky_mxh1s"]
 sky_material = SubResource("PanoramaSkyMaterial_t0hks")
@@ -14,11 +17,16 @@ sky_material = SubResource("PanoramaSkyMaterial_t0hks")
 [sub_resource type="Environment" id="Environment_hqle3"]
 background_mode = 2
 sky = SubResource("Sky_mxh1s")
-volumetric_fog_albedo = Color(0.721569, 0.647059, 0.678431, 1)
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5xpxi"]
+height = 3.0
+radius = 1.2
 
 [node name="Level" type="Node3D"]
-
-[node name="Player" parent="." instance=ExtResource("1_whrr1")]
+script = ExtResource("1_dpdpo")
 
 [node name="ProjectileManager" parent="." instance=ExtResource("2_gan7l")]
 
@@ -26,9 +34,26 @@ volumetric_fog_albedo = Color(0.721569, 0.647059, 0.678431, 1)
 environment = SubResource("Environment_hqle3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.970792, 0.239923, 0, -0.239923, 0.970792, 0, 0, 0)
-light_color = Color(0.494118, 0.454902, 0.678431, 1)
-light_energy = 0.5
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="Bee" parent="." instance=ExtResource("4_vsd6a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89906, -1.163)
+[node name="Platform" type="AnimatableBody3D" parent="."]
+collision_mask = 0
+
+[node name="Player" parent="Platform" instance=ExtResource("1_whrr1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145498, -1.47786, 0)
+shape = SubResource("CylinderShape3D_5xpxi")
+
+[node name="Score" type="Label3D" parent="Platform"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.434688, 1.78821, -0.391468)
+text = "
+"
+
+[node name="plateforme" parent="Platform" instance=ExtResource("6_xduha")]
+transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 0.4, 0, -2.00291, 0)
+
+[node name="EnemyManager" parent="." instance=ExtResource("7_ilp52")]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("7_neqny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30.9081)

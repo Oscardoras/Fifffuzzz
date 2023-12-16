@@ -19,5 +19,7 @@ func shoot():
 		return
 	
 	$AudioStreamPlayer.playing = true
-	ProjectileManager.get_projectile(global_position, global_rotation)
+	var p: XRController3D = get_parent()
+	p.trigger_haptic_pulse("haptic", 10, 1, 0.1, 0)
+	ProjectileManager.get_projectile(global_position + global_basis.z * 0.5, global_rotation)
 	time = delay

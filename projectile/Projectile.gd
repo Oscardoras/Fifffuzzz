@@ -7,11 +7,12 @@ class_name Projectile
 
 @export var speed = 100
 @export var duration = 1
+@export var damages = 10
 var life = 0
 
 func body_entered(object):
 	if object is Enemy:
-		object.damage(1)
+		object.damage(damages)
 	
 	ProjectileManager.give_projectile(self)
 
