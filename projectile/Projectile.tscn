@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://projectile/Projectile.gd" id="1_j0uke"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8u4p"]
-transparency = 1
 albedo_color = Color(0, 0, 1, 0.501961)
 emission_enabled = true
 emission = Color(0, 0, 1, 1)
@@ -18,15 +17,17 @@ height = 1.0
 radius = 0.02
 height = 1.0
 
-[node name="Projectile" type="Node3D"]
+[node name="Projectile" type="Area3D"]
+collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_j0uke")
 
 [node name="MeshInstance" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_drtlp")
 
-[node name="StaticBody" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="StaticBody"]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_clkp3")
+
+[connection signal="body_entered" from="." to="." method="body_entered"]

@@ -1,17 +1,24 @@
-extends Node3D
+extends Area3D
 
 
-const speed = 300
-const duration = 5
+class_name Projectile
+
+@onready var ProjectileManager = get_tree().get_root().get_node("Level/ProjectileManager")
+
+@export var speed = 100
+@export var duration = 1
 var life = 0
 
 func body_entered(object):
-	pass
+	if object is Enemy:
+		object.damage(1)
+	
+	ProjectileManager.give_projectile(self)
 
 func _physics_process(delta):
 	position += transform.basis.z * speed * delta
 	
 	life += delta
 	if life >= duration:
-		get_tree().get_node("ProjectileManager").give_projectile(self)
+		ProjectileManager.give_projectile(self)
 

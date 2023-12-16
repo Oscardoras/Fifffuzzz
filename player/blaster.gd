@@ -1,7 +1,9 @@
 extends Node3D
 
 
-@export var delay = 0.2
+@onready var ProjectileManager = get_tree().get_root().get_node("Level/ProjectileManager")
+
+@export var delay = 0.5
 var time = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -10,10 +12,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	time -= delta
 
 func shoot():
 	if time > 0:
 		return
 	
-	get_tree().get_node("ProjectileManager").get_projectile(position, rotation)
+	$AudioStreamPlayer.playing = true
+	ProjectileManager.get_projectile(global_position, global_rotation)
+	time = delay

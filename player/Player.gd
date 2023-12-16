@@ -1,6 +1,8 @@
 extends XROrigin3D
 
 
+class_name Player
+
 var xr_interface: XRInterface
 
 func _ready():

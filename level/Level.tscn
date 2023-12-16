@@ -1,7 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://p6afuj570ihr"]
+[gd_scene load_steps=8 format=3 uid="uid://p6afuj570ihr"]
 
 [ext_resource type="PackedScene" uid="uid://dhmrqx1r47m1e" path="res://player/Player.tscn" id="1_whrr1"]
+[ext_resource type="PackedScene" uid="uid://wxieb6bwlwik" path="res://projectile/ProjectileManager.tscn" id="2_gan7l"]
+[ext_resource type="Texture2D" uid="uid://dk02ce86igw2b" path="res://addons/AllSkyFree_Skyboxes/Cold Night Equirect.png" id="3_8df7u"]
+[ext_resource type="PackedScene" uid="uid://bc5sp7l1r8mes" path="res://enemies/Bee.tscn" id="4_vsd6a"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t0hks"]
+panorama = ExtResource("3_8df7u")
+
+[sub_resource type="Sky" id="Sky_mxh1s"]
+sky_material = SubResource("PanoramaSkyMaterial_t0hks")
+
+[sub_resource type="Environment" id="Environment_hqle3"]
+background_mode = 2
+sky = SubResource("Sky_mxh1s")
+volumetric_fog_albedo = Color(0.721569, 0.647059, 0.678431, 1)
 
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_whrr1")]
+
+[node name="ProjectileManager" parent="." instance=ExtResource("2_gan7l")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hqle3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.970792, 0.239923, 0, -0.239923, 0.970792, 0, 0, 0)
+light_color = Color(0.494118, 0.454902, 0.678431, 1)
+light_energy = 0.5
+
+[node name="Bee" parent="." instance=ExtResource("4_vsd6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89906, -1.163)

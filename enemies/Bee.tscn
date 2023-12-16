@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc5sp7l1r8mes"]
+
+[ext_resource type="PackedScene" uid="uid://n2qjnqc4nko" path="res://enemies/demon_bee_full_texture.glb" id="1_cs1gc"]
+[ext_resource type="Script" path="res://enemies/Bee.gd" id="1_o2ovo"]
+[ext_resource type="AudioStream" uid="uid://dg1nvguysefhi" path="res://enemies/Bee Sound Effect.mp3" id="3_j3ct1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iweat"]
+radius = 0.2
+height = 0.6
+
+[node name="Bee" type="CharacterBody3D"]
+collision_layer = 8
+motion_mode = 1
+script = ExtResource("1_o2ovo")
+
+[node name="Mesh" parent="." instance=ExtResource("1_cs1gc")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.09, 0)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_iweat")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_j3ct1")

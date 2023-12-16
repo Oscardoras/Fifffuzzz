@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://gkbdwfu0042u"
+path="res://.godot/imported/Blaster Sound Effect.mp3-979208686e570c1f696c3dee696e1f86.mp3str"
+
+[deps]
+
+source_file="res://player/Blaster Sound Effect.mp3"
+dest_files=["res://.godot/imported/Blaster Sound Effect.mp3-979208686e570c1f696c3dee696e1f86.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
