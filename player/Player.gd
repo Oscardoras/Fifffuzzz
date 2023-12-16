@@ -1,5 +1,6 @@
 extends XROrigin3D
 
+
 var xr_interface: XRInterface
 
 func _ready():
