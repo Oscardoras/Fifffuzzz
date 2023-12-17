@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bylkxr2heo1vx" path="res://player/Blaster.tscn" id="8_sf8h2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c37wc"]
+radius = 0.2
 
 [node name="Player" type="XROrigin3D"]
 script = ExtResource("1_t4kfl")
@@ -36,7 +37,6 @@ hand_material_override = ExtResource("3_n13vn")
 [node name="Blaster" parent="LeftHand" instance=ExtResource("8_sf8h2")]
 
 [node name="RightHand" type="XRController3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.174349, 0, 0)
 tracker = &"right_hand"
 script = ExtResource("6_qo4yt")
 

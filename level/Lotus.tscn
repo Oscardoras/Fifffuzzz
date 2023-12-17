@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://oeggf3r7gcmy"]
+
+[ext_resource type="PackedScene" uid="uid://dlq5o25xee5i1" path="res://level/flower_lotus.glb" id="1_8bjjq"]
+
+[node name="Lotus" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_8bjjq")]
+
+[node name="OmniLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13671, 0)
+light_color = Color(0.541176, 0.623529, 0.909804, 1)

@@ -6,10 +6,10 @@ class_name Bee
 @export var hp: int = 1
 @export var persistance: float = 20
 @export var xp: int = 10
-@export var speed: float = 100
+@export var speed: float = 50
 @export var damages: int = 1
 @export var horizontal_rotation_speed = 0.5
-@export var vertical_rotation_speed = 0.5
+@export var vertical_rotation_speed = 2
 @export var one_attack = true
 var alive = true
 var time: float = 0
@@ -18,8 +18,8 @@ func _ready():
 	$Mesh/AnimationPlayer.get_animation("_bee_hover_skeletal_1").set_loop_mode(Animation.LoopMode.LOOP_LINEAR)
 	$Mesh/AnimationPlayer.play("_bee_hover_skeletal_1")
 	
-	var direction = get_tree().get_nodes_in_group("Player")[0].global_position - position
-	look_at(direction, Vector3.UP)
+	var direction = get_tree().get_nodes_in_group("Player")[0].global_position + Vector3.UP - global_position
+	look_at(direction)
 
 func _physics_process(delta):
 	if hp <= 0 and alive:
@@ -42,7 +42,7 @@ func _physics_process(delta):
 		queue_free()
 
 func move(delta):
-	var direction = get_tree().get_nodes_in_group("Player")[0].global_position - position
+	var direction = get_tree().get_nodes_in_group("Player")[0].global_position + Vector3.UP - global_position
 	direction /= direction.length()
 	
 	apply_force(-global_transform.basis.z * speed)

@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dhmrqx1r47m1e" path="res://player/Player.tscn" id="1_whrr1"]
 [ext_resource type="PackedScene" uid="uid://wxieb6bwlwik" path="res://projectile/ProjectileManager.tscn" id="2_gan7l"]
 [ext_resource type="Texture2D" uid="uid://df3lxq3wfhrpo" path="res://addons/AllSkyFree_Skyboxes/AllSky_Overcast4_Low.png" id="3_da2na"]
-[ext_resource type="PackedScene" uid="uid://t1256ljchd68" path="res://level/plateforme.glb" id="6_xduha"]
-[ext_resource type="PackedScene" uid="uid://bxy0r6nvwxvbg" path="res://enemies/EnemyManager.tscn" id="7_ilp52"]
-[ext_resource type="PackedScene" uid="uid://dlq5o25xee5i1" path="res://level/flower_lotus.glb" id="7_neqny"]
+[ext_resource type="PackedScene" uid="uid://cieqrvboglnt7" path="res://level/plateforme.glb" id="6_xduha"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t0hks"]
 panorama = ExtResource("3_da2na")
@@ -19,11 +17,15 @@ background_mode = 2
 sky = SubResource("Sky_mxh1s")
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
+volumetric_fog_density = 0.03
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0efyx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5xpxi"]
 height = 3.0
 radius = 1.2
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_xb0o2"]
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_dpdpo")
@@ -35,9 +37,15 @@ environment = SubResource("Environment_hqle3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0.752941, 0.796078, 1)
 
-[node name="Platform" type="AnimatableBody3D" parent="."]
+[node name="Platform" type="RigidBody3D" parent="."]
 collision_mask = 0
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_0efyx")
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 100.0
 
 [node name="Player" parent="Platform" instance=ExtResource("1_whrr1")]
 
@@ -46,14 +54,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145498, -1.47786, 0)
 shape = SubResource("CylinderShape3D_5xpxi")
 
 [node name="Score" type="Label3D" parent="Platform"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.434688, 1.78821, -0.391468)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.358218, 1.78821, -0.268513)
 text = "
 "
 
-[node name="plateforme" parent="Platform" instance=ExtResource("6_xduha")]
-transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 0.4, 0, -2.00291, 0)
+[node name="Plateform" parent="Platform" instance=ExtResource("6_xduha")]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.35, 0, -2.01511, 0)
 
-[node name="EnemyManager" parent="." instance=ExtResource("7_ilp52")]
+[node name="Enemies" type="Node3D" parent="."]
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("7_neqny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30.9081)
+[node name="Decoration" type="Node3D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMP3_xb0o2")
