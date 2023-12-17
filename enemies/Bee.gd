@@ -6,7 +6,7 @@ class_name Bee
 @export var hp: int = 1
 @export var persistance: float = 20
 @export var xp: int = 10
-@export var speed: float = 50
+@export var speed: float = 60
 @export var damages: int = 1
 @export var horizontal_rotation_speed = 0.5
 @export var vertical_rotation_speed = 2

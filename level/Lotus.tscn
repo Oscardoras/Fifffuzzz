@@ -1,11 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://oeggf3r7gcmy"]
+[gd_scene load_steps=5 format=3 uid="uid://oeggf3r7gcmy"]
 
 [ext_resource type="PackedScene" uid="uid://dlq5o25xee5i1" path="res://level/flower_lotus.glb" id="1_8bjjq"]
+[ext_resource type="Script" path="res://level/Lotus.gd" id="1_nujv0"]
 
-[node name="Lotus" type="Node3D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t6dmt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r2iv7"]
+
+[node name="Lotus" type="RigidBody3D"]
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_t6dmt")
+gravity_scale = 0.0
+linear_damp = 1.0
+script = ExtResource("1_nujv0")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_8bjjq")]
 
 [node name="OmniLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13671, 0)
 light_color = Color(0.541176, 0.623529, 0.909804, 1)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_r2iv7")

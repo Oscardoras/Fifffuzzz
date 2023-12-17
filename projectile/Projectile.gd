@@ -17,7 +17,8 @@ func body_entered(object):
 func _physics_process(delta):
 	position += transform.basis.z * speed * delta
 	
-	life += delta
-	if life >= duration:
-		get_parent().give_projectile(self)
+	if life >= 0:
+		life += delta
+		if life >= duration:
+			get_parent().give_projectile(self)
 
