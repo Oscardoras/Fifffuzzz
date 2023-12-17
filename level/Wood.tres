@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://duselxvpfqhuu"]
+
+[ext_resource type="Texture2D" uid="uid://cg3ccojwnpq83" path="res://level/bark_willow_02_diff_4k.jpg" id="1_a2777"]
+[ext_resource type="Texture2D" uid="uid://bs7y0sv1qltjm" path="res://level/bark_willow_02_disp_4k.png" id="2_32w24"]
+
+[resource]
+albedo_texture = ExtResource("1_a2777")
+roughness_texture = ExtResource("2_32w24")

@@ -50,7 +50,7 @@ func _process(delta):
 func _physics_process(delta):
 	decoration_manager()
 	
-	$Platform.apply_force(Vector3(0, platform_speed, 0))
+	$Platform.apply_force(Vector3(0, platform_speed * (1 + get_bpm_level() / 8.), 0))
 
 func get_bpm_level():
 	var time = $MusicPlayer.get_playback_position()
@@ -75,7 +75,7 @@ func spawn_bees():
 		
 		var t = theta + randf() * 0.3
 		var r = spawn_distance + randf() * 20
-		bee.global_position = Vector3(r * cos(t), $Platform.position.y + randf()*20, r * sin(t))
+		bee.position = Vector3(r * cos(t), $Platform.position.y + randf()*20, r * sin(t))
 		
 		$Enemies.add_child(bee)
 

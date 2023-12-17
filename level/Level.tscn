@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://p6afuj570ihr"]
+[gd_scene load_steps=17 format=3 uid="uid://p6afuj570ihr"]
 
 [ext_resource type="Script" path="res://level/Level.gd" id="1_dpdpo"]
 [ext_resource type="PackedScene" uid="uid://dhmrqx1r47m1e" path="res://player/Player.tscn" id="1_whrr1"]
 [ext_resource type="PackedScene" uid="uid://wxieb6bwlwik" path="res://projectile/ProjectileManager.tscn" id="2_gan7l"]
 [ext_resource type="Texture2D" uid="uid://df3lxq3wfhrpo" path="res://addons/AllSkyFree_Skyboxes/AllSky_Overcast4_Low.png" id="3_da2na"]
+[ext_resource type="PackedScene" uid="uid://glg30kcm48af" path="res://level/plateform.glb" id="5_uhya7"]
 [ext_resource type="AudioStream" uid="uid://btba0wgfl1q2w" path="res://musics/Whatever It Takes by Fabian Wiestner.mp3" id="6_5wfwq"]
 [ext_resource type="AudioStream" uid="uid://bbwksbjgm82xj" path="res://Game Over.mp3" id="6_iahft"]
-[ext_resource type="PackedScene" uid="uid://cieqrvboglnt7" path="res://level/plateforme.glb" id="6_xduha"]
+[ext_resource type="Material" uid="uid://duselxvpfqhuu" path="res://level/Wood.tres" id="6_v02ue"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_t0hks"]
 panorama = ExtResource("3_da2na")
@@ -30,6 +31,11 @@ radius = 1.2
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vnch2"]
 height = 3.0
 radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_tttwl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h28hy"]
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_dpdpo")
@@ -62,9 +68,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 text = "
 "
 
-[node name="Plateform" parent="Platform" instance=ExtResource("6_xduha")]
-transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.35, 0, -2.01511, 0)
-
 [node name="Branch1" type="CollisionShape3D" parent="Platform"]
 transform = Transform3D(0.920231, -0.131724, 0.368543, 0.0497685, 0.9734, 0.223642, -0.388199, -0.187461, 0.902308, 0.216876, 1.22394, 0.722468)
 shape = SubResource("CylinderShape3D_vnch2")
@@ -76,6 +79,17 @@ shape = SubResource("CylinderShape3D_vnch2")
 [node name="Branch3" type="CollisionShape3D" parent="Platform"]
 transform = Transform3D(0.769238, 0.226859, -0.597335, -0.00235725, 0.935852, 0.352386, 0.638958, -0.269661, 0.720427, -0.887432, 1.24778, 0.281319)
 shape = SubResource("CylinderShape3D_vnch2")
+
+[node name="Plateform" parent="Platform" instance=ExtResource("5_uhya7")]
+transform = Transform3D(0.35, 0, 0, 0, 1, 0, 0, 0, 0.35, 0, -2.041, 0)
+
+[node name="tree" parent="Platform/Plateform" index="0"]
+surface_material_override/0 = ExtResource("6_v02ue")
+
+[node name="Sphere" type="MeshInstance3D" parent="Platform"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 8.04455, 0)
+mesh = SubResource("SphereMesh_tttwl")
+surface_material_override/0 = SubResource("StandardMaterial3D_h28hy")
 
 [node name="Enemies" type="Node3D" parent="."]
 
