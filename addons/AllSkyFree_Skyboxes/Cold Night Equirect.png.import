@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dk02ce86igw2b"
 path.s3tc="res://.godot/imported/Cold Night Equirect.png-a6fb06d524d67a83fd57a304d3022ab6.s3tc.ctex"
+path.etc2="res://.godot/imported/Cold Night Equirect.png-a6fb06d524d67a83fd57a304d3022ab6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/AllSkyFree_Skyboxes/Cold Night Equirect.png"
-dest_files=["res://.godot/imported/Cold Night Equirect.png-a6fb06d524d67a83fd57a304d3022ab6.s3tc.ctex"]
+dest_files=["res://.godot/imported/Cold Night Equirect.png-a6fb06d524d67a83fd57a304d3022ab6.s3tc.ctex", "res://.godot/imported/Cold Night Equirect.png-a6fb06d524d67a83fd57a304d3022ab6.etc2.ctex"]
 
 [params]
 

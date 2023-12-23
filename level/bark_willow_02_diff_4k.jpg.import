@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cg3ccojwnpq83"
 path.s3tc="res://.godot/imported/bark_willow_02_diff_4k.jpg-672965c5bd5a21d464cb7a66f565082e.s3tc.ctex"
+path.etc2="res://.godot/imported/bark_willow_02_diff_4k.jpg-672965c5bd5a21d464cb7a66f565082e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://level/bark_willow_02_diff_4k.jpg"
-dest_files=["res://.godot/imported/bark_willow_02_diff_4k.jpg-672965c5bd5a21d464cb7a66f565082e.s3tc.ctex"]
+dest_files=["res://.godot/imported/bark_willow_02_diff_4k.jpg-672965c5bd5a21d464cb7a66f565082e.s3tc.ctex", "res://.godot/imported/bark_willow_02_diff_4k.jpg-672965c5bd5a21d464cb7a66f565082e.etc2.ctex"]
 
 [params]
 

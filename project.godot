@@ -30,6 +30,10 @@ import/fbx/enabled=false
 3d_physics/layer_3="Projectile"
 3d_physics/layer_4="Bee"
 
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
+
 [xr]
 
 openxr/enabled=true

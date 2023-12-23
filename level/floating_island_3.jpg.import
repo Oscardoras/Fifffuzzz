@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://budctr7wost8e"
 path.s3tc="res://.godot/imported/floating_island_3.jpg-c87eb94c1cbc4bbd897ec4a09ac1bb93.s3tc.ctex"
+path.etc2="res://.godot/imported/floating_island_3.jpg-c87eb94c1cbc4bbd897ec4a09ac1bb93.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://level/floating_island_3.jpg"
-dest_files=["res://.godot/imported/floating_island_3.jpg-c87eb94c1cbc4bbd897ec4a09ac1bb93.s3tc.ctex"]
+dest_files=["res://.godot/imported/floating_island_3.jpg-c87eb94c1cbc4bbd897ec4a09ac1bb93.s3tc.ctex", "res://.godot/imported/floating_island_3.jpg-c87eb94c1cbc4bbd897ec4a09ac1bb93.etc2.ctex"]
 
 [params]
 

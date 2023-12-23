@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi0xpy8rycylf"
 path.s3tc="res://.godot/imported/demon_bee_full_texture_1.png-d718433d1e913420f87f29599bfd4482.s3tc.ctex"
+path.etc2="res://.godot/imported/demon_bee_full_texture_1.png-d718433d1e913420f87f29599bfd4482.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://enemies/demon_bee_full_texture_1.png"
-dest_files=["res://.godot/imported/demon_bee_full_texture_1.png-d718433d1e913420f87f29599bfd4482.s3tc.ctex"]
+dest_files=["res://.godot/imported/demon_bee_full_texture_1.png-d718433d1e913420f87f29599bfd4482.s3tc.ctex", "res://.godot/imported/demon_bee_full_texture_1.png-d718433d1e913420f87f29599bfd4482.etc2.ctex"]
 
 [params]
 
